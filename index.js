@@ -10,7 +10,7 @@ var app = express();
 //var webhookCalledCount = 0;
 
 app.get('/', function (req, res) {
-  client.get('myCounter', function(err, reply) {
+  redis.get('myCounter', function(err, reply) {
     res.send('webhook called: ' + reply + ' times');
   });
 });
