@@ -5,6 +5,10 @@ redis.on("error", function (err) {
     console.log("Error " + err);
 });
 
+// Setup Firebase
+var Firebase = require("firebase");
+var myFirebaseRef = new Firebase("https://firehose.firebaseio.com/");
+
 // Setup Express
 var express = require('express');
 var app = express();
@@ -15,7 +19,9 @@ app.use(express.static('static-web'));
 // Update Firebase for all the dashboard clients
 app.get('/webhook', function (req, res) {
   redis.incr('myCounter', function(err, reply) {
-    res.send('myCounter: ' + reply);
+    myFirebaseRef.update({"myCounter": reply}, function(error){
+      res.send('myCounter: ' + reply);
+    });
   });
 });
 
