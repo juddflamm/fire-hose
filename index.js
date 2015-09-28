@@ -4,7 +4,7 @@ var app = express();
 var webhookCalledCount = 0;
 
 app.get('/', function (req, res) {
-  res.send(webhookCalledCount);
+  res.send('webhook called: ' + webhookCalledCount + ' times');
 });
 
 app.get('/webhook', function (req, res) {
