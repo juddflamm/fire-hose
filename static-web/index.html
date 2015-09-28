@@ -1,4 +1,4 @@
-<html>
+<html ng-app="fire-hose">
 <head>
   <title>Fire Hose | Live Dashboard</title>
   <!-- app style sheet -->
@@ -14,10 +14,11 @@
   <!-- app javascript -->
   <script src="app.js"></script>
 </head>
-<body>
-  <h2>Fire Hose | Live Dashboard<h2>
+<body ng-controller="Main">
+  <h1>Fire Hose | Live Dashboard<h1>
 
-    
+  <h2>Webhook Counter: {{liveData.myCounter}}</h2>
+  <iframe style="display: {{(liveData.myCounter>=100)?'block':'none'}}" src="//giphy.com/embed/KhYiyJ5LCPNvi" width="480" height="527" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 </body>
 </html>
